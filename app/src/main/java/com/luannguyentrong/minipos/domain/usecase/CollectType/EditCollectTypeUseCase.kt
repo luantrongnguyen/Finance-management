@@ -7,7 +7,7 @@ import javax.inject.Inject
 class EditCollectTypeUseCase @Inject constructor(
     private val repository: CollectTypeRepository
 ) {
-    suspend operator fun invoke(CollectType: CollectType) {
-        return repository.editCollectType(CollectType)
+    suspend operator fun invoke(collectType: CollectType) {
+        return repository.editCollectType(collectType)
     }
 }

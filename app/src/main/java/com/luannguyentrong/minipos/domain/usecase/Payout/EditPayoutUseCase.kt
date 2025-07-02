@@ -7,7 +7,7 @@ import javax.inject.Inject
 class EditPayoutUseCase @Inject constructor(
     private val repository: PayoutRepository
 ) {
-    suspend operator fun invoke(Payout: Payout) {
-        return repository.editPayout(Payout)
+    suspend operator fun invoke(payout: Payout) {
+        return repository.editPayout(payout)
     }
 }

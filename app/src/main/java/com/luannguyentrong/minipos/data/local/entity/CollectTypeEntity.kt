@@ -2,6 +2,7 @@ package com.luannguyentrong.minipos.data.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.luannguyentrong.minipos.domain.model.CollectType
 
 @Entity(tableName = "collect_types")
 data class CollectTypeEntity(
@@ -9,8 +10,8 @@ data class CollectTypeEntity(
     val name :String,
     val image : String
 ) {
-    fun toDomain() = CollectTypeEntity(id,name,image)
+    fun toDomain() = CollectType(id,name,image)
     companion object{
-        fun fromDomain(collectTypeEntity: CollectTypeEntity) = CollectTypeEntity(collectTypeEntity.id, collectTypeEntity.name, collectTypeEntity.image)
+        fun fromDomain(collectType: CollectType) = CollectTypeEntity(collectType.id, collectType.name, collectType.image)
     }
 }

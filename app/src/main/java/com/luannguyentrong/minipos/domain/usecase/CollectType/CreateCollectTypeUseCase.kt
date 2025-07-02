@@ -8,7 +8,7 @@ import javax.inject.Inject
 class CreateCollectTypeUseCase @Inject constructor(
     private val repository: CollectTypeRepository
 ) {
-    suspend operator fun invoke(CollectType: CollectType) {
-        return repository.createCollectType(CollectType)
+    suspend operator fun invoke(collectType: CollectType) {
+        return repository.createCollectType(collectType)
     }
 }

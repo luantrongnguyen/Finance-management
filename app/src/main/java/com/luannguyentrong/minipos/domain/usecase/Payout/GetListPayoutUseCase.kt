@@ -8,9 +8,9 @@ import javax.inject.Inject
 
 
 class GetListPayoutUseCase @Inject constructor(
-    private val repository: PayoutTypeRepository
+    private val repository: PayoutRepository
 ) {
-    suspend operator fun invoke(): List<PayoutType> {
-        return repository.getListPayoutType()
+    suspend operator fun invoke(): List<Payout> {
+        return repository.getListPayout()
     }
 }

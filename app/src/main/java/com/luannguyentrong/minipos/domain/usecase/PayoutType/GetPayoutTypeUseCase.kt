@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetPayoutTypeUseCase @Inject constructor(
     private val repository: PayoutTypeRepository
 ) {
-    suspend operator fun invoke(): List<PayoutType> {
-        return repository.getListPayoutType()
+    suspend operator fun invoke(id:Int): PayoutType {
+        return repository.getPayoutType(id)
     }
 }

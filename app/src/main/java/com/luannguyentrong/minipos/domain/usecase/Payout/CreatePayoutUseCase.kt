@@ -7,7 +7,7 @@ import javax.inject.Inject
 class CreatePayoutUseCase @Inject constructor(
     private val repository: PayoutRepository
 ) {
-    suspend operator fun invoke(Payout: Payout) {
-        return repository.createPayout(Payout)
+    suspend operator fun invoke(payout: Payout) {
+        return repository.createPayout(payout)
     }
 }

@@ -7,7 +7,7 @@ import javax.inject.Inject
 class CreatePayoutTypeUseCase @Inject constructor(
     private val repository: PayoutTypeRepository
 ) {
-    suspend operator fun invoke(PayoutType: PayoutType) {
-        return repository.createPayoutType(PayoutType)
+    suspend operator fun invoke(payoutType: PayoutType) {
+        return repository.createPayoutType(payoutType)
     }
 }
