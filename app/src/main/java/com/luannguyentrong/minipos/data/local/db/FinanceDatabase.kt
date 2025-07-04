@@ -14,7 +14,8 @@ import com.luannguyentrong.minipos.domain.model.PayoutType
 
 @Database(
     entities = [CollectEntity::class, CollectTypeEntity::class, PayoutEntity::class, PayoutTypeEntity::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 
 abstract class FinanceDatabase : RoomDatabase() {
