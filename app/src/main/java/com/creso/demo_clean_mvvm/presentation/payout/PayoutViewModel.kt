@@ -26,7 +26,7 @@ class PayoutViewModel @Inject constructor(
 
     var payouts by mutableStateOf<List<Payout>>(emptyList()) // update lại UI khi Payouts thay đổi
         private set // Có tể đọc mọi nơi nhưng chỉ set trong class
-    var payout by mutableStateOf<Payout>(Payout(0,"",0.0,0))
+    var payout by mutableStateOf<Payout>(Payout(0,"",0.0,0,0))
         private set
 
     fun loadList(){

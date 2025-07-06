@@ -26,7 +26,7 @@ class CollectViewModel @Inject constructor(
 
     var collects by mutableStateOf<List<Collect>>(emptyList()) // update lại UI khi collects thay đổi
         private set // Có tể đọc mọi nơi nhưng chỉ set trong class
-    var collect by mutableStateOf<Collect>(Collect(0,"",0.0,0))
+    var collect by mutableStateOf<Collect>(Collect(0,"",0.0,0,0))
         private set
 
     fun loadList(){

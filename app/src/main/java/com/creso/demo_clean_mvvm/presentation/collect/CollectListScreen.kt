@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.payout
+package com.creso.demo_clean_mvvm.presentation.collect
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,11 +24,11 @@ import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PayoutListScreen(
+fun CollectListScreen(
     navController: NavController,
-    viewModel: PayoutViewModel = hiltViewModel()
+    viewModel: CollectViewModel = hiltViewModel()
 ) {
-    val payouts = viewModel.payouts
+    val collects = viewModel.collects
 
     LaunchedEffect(Unit) {
         viewModel.loadList()
@@ -36,18 +36,18 @@ fun PayoutListScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Danh sách chi tiêu") })
+            TopAppBar(title = { Text("Danh sách thu") })
         },
         floatingActionButton = {
             FloatingActionButton(onClick = {
-                navController.navigate("payout/form")
+                navController.navigate("collect/form")
             }) {
-                Icon(Icons.Default.Add, contentDescription = "Thêm")
+                Icon(Icons.Default.Add, contentDescription = "Lưu")
             }
         }
     ) { padding ->
         LazyColumn(contentPadding = padding) {
-            items(payouts.size) { i ->
+            items(collects.size) { i ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -55,9 +55,9 @@ fun PayoutListScreen(
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                 ) {
                     Column(Modifier.padding(16.dp)) {
-                        Text("Số tiền chi: ${payouts[i].amount}")
-                        Text("Ghi chú: ${payouts[i].name}")
-                        Text("Ngày tạo: ${Date(payouts[i].date)}")
+                        Text("Số tiền thu: ${collects[i].amount}")
+                        Text("Ghi chú: ${collects[i].name}")
+                        Text("Ngày: ${Date(collects[i].date)}")
                     }
                 }
             }

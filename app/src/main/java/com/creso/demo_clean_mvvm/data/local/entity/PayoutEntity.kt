@@ -10,9 +10,10 @@ class PayoutEntity (
     val name : String,
     val amount: Double,
     val date: Long,
+    val payoutType: Int,
 ) {
-    fun toDomain() : Payout = Payout(id,name,amount,date)
+    fun toDomain() : Payout = Payout(id,name,amount,date, payoutType)
     companion object{
-        fun fromDomain(payout: Payout) = PayoutEntity(payout.id,payout.name,payout.amount,payout.date)
+        fun fromDomain(payout: Payout) = PayoutEntity(payout.id,payout.name,payout.amount,payout.date, payout.payoutType)
     }
 }

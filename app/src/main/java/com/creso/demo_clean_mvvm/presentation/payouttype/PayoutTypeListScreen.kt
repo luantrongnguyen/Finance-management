@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.payout
+package com.creso.demo_clean_mvvm.presentation.payouttype
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,15 +20,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PayoutListScreen(
+fun PayoutTypeListScreen(
     navController: NavController,
-    viewModel: PayoutViewModel = hiltViewModel()
+    viewModel: PayoutTypeViewModel = hiltViewModel()
 ) {
-    val payouts = viewModel.payouts
+    val payoutTypes = viewModel.PayoutTypes
 
     LaunchedEffect(Unit) {
         viewModel.loadList()
@@ -36,18 +35,18 @@ fun PayoutListScreen(
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Danh sách chi tiêu") })
+            TopAppBar(title = { Text("Danh sách loại chi") })
         },
         floatingActionButton = {
             FloatingActionButton(onClick = {
-                navController.navigate("payout/form")
+                navController.navigate("payouttype/form")
             }) {
-                Icon(Icons.Default.Add, contentDescription = "Thêm")
+                Icon(Icons.Default.Add, contentDescription = "Lưu")
             }
         }
     ) { padding ->
         LazyColumn(contentPadding = padding) {
-            items(payouts.size) { i ->
+            items(payoutTypes.size) { i ->
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -55,9 +54,7 @@ fun PayoutListScreen(
                     elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
                 ) {
                     Column(Modifier.padding(16.dp)) {
-                        Text("Số tiền chi: ${payouts[i].amount}")
-                        Text("Ghi chú: ${payouts[i].name}")
-                        Text("Ngày tạo: ${Date(payouts[i].date)}")
+                        Text("Tên: ${payoutTypes[i].name}")
                     }
                 }
             }

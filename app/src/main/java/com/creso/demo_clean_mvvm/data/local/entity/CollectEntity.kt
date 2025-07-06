@@ -9,10 +9,11 @@ data class CollectEntity (
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val name: String,
     val amount: Double,
-    val date: Long
+    val date: Long,
+    val collectType:Int
 ) {
-    fun toDomain(): Collect = Collect(id,name,amount,date)
+    fun toDomain(): Collect = Collect(id,name,amount,date, collectType)
     companion object{
-        fun fromDomain (collect: Collect) = CollectEntity(collect.id,collect.name,collect.amount,collect.date)
+        fun fromDomain (collect: Collect) = CollectEntity(collect.id,collect.name,collect.amount,collect.date,collect.collectType)
     }
 }
