@@ -16,9 +16,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,9 +42,15 @@ fun CollectTypeListScreen(
             TopAppBar(title = { Text("Danh sách loại thu") })
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                navController.navigate("collecttype/form")
-            }) {
+            FloatingActionButton(
+                onClick = {
+                    navController.navigate("collecttype/form")
+                },
+                shape = RoundedCornerShape(32.dp),
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = Color.White,
+                elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 6.dp),
+            ) {
                 Icon(Icons.Default.Add, contentDescription = "Thêm")
             }
         }

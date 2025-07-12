@@ -34,10 +34,8 @@ class CollectTypeViewModel @Inject constructor(
         }
     }
 
-    fun load(id:Int){
-        viewModelScope.launch {
-            collectType= getCollectTypeUseCase(id)
-        }
+    fun load(id:Int) = viewModelScope.launch {
+        collectType= getCollectTypeUseCase(id)
     }
 
     fun create(collectType: CollectType){
