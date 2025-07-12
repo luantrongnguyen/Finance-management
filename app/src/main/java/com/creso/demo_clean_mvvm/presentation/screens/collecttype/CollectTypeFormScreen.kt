@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.collecttype
+package com.creso.demo_clean_mvvm.presentation.screens.collecttype
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

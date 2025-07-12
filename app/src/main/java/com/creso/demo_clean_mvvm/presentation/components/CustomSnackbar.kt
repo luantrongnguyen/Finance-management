@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.main
+package com.creso.demo_clean_mvvm.presentation.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer

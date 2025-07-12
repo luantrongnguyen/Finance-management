@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.collect
+package com.creso.demo_clean_mvvm.presentation.screens.collect
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.creso.demo_clean_mvvm.domain.model.Collect
-import com.creso.demo_clean_mvvm.presentation.collecttype.CollectTypeViewModel
+import com.creso.demo_clean_mvvm.presentation.screens.collecttype.CollectTypeViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

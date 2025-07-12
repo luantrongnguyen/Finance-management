@@ -1,9 +1,6 @@
-package com.creso.demo_clean_mvvm.presentation.collect
+package com.creso.demo_clean_mvvm.presentation.screens.collect
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,7 +12,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -49,10 +45,9 @@ import androidx.compose.ui.zIndex
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.creso.demo_clean_mvvm.domain.model.Collect
-import com.creso.demo_clean_mvvm.presentation.collecttype.CollectTypeViewModel
-import com.creso.demo_clean_mvvm.presentation.main.CustomSnackbar
+import com.creso.demo_clean_mvvm.presentation.screens.collecttype.CollectTypeViewModel
+import com.creso.demo_clean_mvvm.presentation.components.CustomSnackbar
 import kotlinx.coroutines.launch
-import okhttp3.internal.wait
 import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)

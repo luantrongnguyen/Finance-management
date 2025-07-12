@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.payouttype
+package com.creso.demo_clean_mvvm.presentation.screens.payouttype
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

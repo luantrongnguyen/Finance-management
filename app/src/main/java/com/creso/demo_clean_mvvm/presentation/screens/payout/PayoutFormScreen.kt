@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.payout
+package com.creso.demo_clean_mvvm.presentation.screens.payout
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -41,7 +41,7 @@ import androidx.navigation.NavController
 import com.creso.demo_clean_mvvm.domain.model.Collect
 import com.creso.demo_clean_mvvm.domain.model.Payout
 import com.creso.demo_clean_mvvm.domain.model.PayoutType
-import com.creso.demo_clean_mvvm.presentation.payouttype.PayoutTypeViewModel
+import com.creso.demo_clean_mvvm.presentation.screens.payouttype.PayoutTypeViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

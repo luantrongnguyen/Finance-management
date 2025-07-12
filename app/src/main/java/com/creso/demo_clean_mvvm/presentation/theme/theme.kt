@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation
+package com.creso.demo_clean_mvvm.presentation.theme
 
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme

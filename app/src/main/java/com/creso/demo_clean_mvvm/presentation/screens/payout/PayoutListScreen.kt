@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.payout
+package com.creso.demo_clean_mvvm.presentation.screens.payout
 
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
@@ -39,7 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.creso.demo_clean_mvvm.domain.model.Collect
 import com.creso.demo_clean_mvvm.domain.model.Payout
-import com.creso.demo_clean_mvvm.presentation.payouttype.PayoutTypeViewModel
+import com.creso.demo_clean_mvvm.presentation.screens.payouttype.PayoutTypeViewModel
 import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)

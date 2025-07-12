@@ -1,11 +1,11 @@
-package com.creso.demo_clean_mvvm.presentation.main
+package com.creso.demo_clean_mvvm.presentation.screens.main
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
 import androidx.compose.runtime.Composable
-import com.creso.demo_clean_mvvm.presentation.DarkColors
-import com.creso.demo_clean_mvvm.presentation.LightColors
+import com.creso.demo_clean_mvvm.presentation.theme.DarkColors
+import com.creso.demo_clean_mvvm.presentation.theme.LightColors
 
 @Composable
 fun MyAppTheme(

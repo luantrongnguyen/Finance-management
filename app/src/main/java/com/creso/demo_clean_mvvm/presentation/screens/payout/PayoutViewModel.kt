@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.payout
+package com.creso.demo_clean_mvvm.presentation.screens.payout
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

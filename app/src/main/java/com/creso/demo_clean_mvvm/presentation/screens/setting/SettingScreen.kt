@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.setting
+package com.creso.demo_clean_mvvm.presentation.screens.setting
 
 import android.content.IntentFilter
 import android.net.ConnectivityManager
@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.creso.demo_clean_mvvm.data.receiver.NetworkReceiver
-import com.creso.demo_clean_mvvm.presentation.payouttype.PayoutTypeViewModel
+import com.creso.demo_clean_mvvm.presentation.screens.payouttype.PayoutTypeViewModel
 
 @Composable
 fun SettingScreen(

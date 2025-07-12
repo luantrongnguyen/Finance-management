@@ -1,31 +1,25 @@
-package com.creso.demo_clean_mvvm.presentation.main
+package com.creso.demo_clean_mvvm.presentation.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.creso.demo_clean_mvvm.R
-import com.creso.demo_clean_mvvm.presentation.collect.CollectFormScreen
-import com.creso.demo_clean_mvvm.presentation.collect.CollectListScreen
-import com.creso.demo_clean_mvvm.presentation.collecttype.CollectTypeFormScreen
-import com.creso.demo_clean_mvvm.presentation.collecttype.CollectTypeListScreen
-import com.creso.demo_clean_mvvm.presentation.payout.PayoutFormScreen
-import com.creso.demo_clean_mvvm.presentation.payout.PayoutListScreen
-import com.creso.demo_clean_mvvm.presentation.payouttype.PayoutTypeFormScreen
-import com.creso.demo_clean_mvvm.presentation.payouttype.PayoutTypeListScreen
-import com.creso.demo_clean_mvvm.presentation.setting.SettingScreen
+import com.creso.demo_clean_mvvm.presentation.screens.collect.CollectFormScreen
+import com.creso.demo_clean_mvvm.presentation.screens.collect.CollectListScreen
+import com.creso.demo_clean_mvvm.presentation.screens.collecttype.CollectTypeFormScreen
+import com.creso.demo_clean_mvvm.presentation.screens.collecttype.CollectTypeListScreen
+import com.creso.demo_clean_mvvm.presentation.screens.payout.PayoutFormScreen
+import com.creso.demo_clean_mvvm.presentation.screens.payout.PayoutListScreen
+import com.creso.demo_clean_mvvm.presentation.screens.payouttype.PayoutTypeFormScreen
+import com.creso.demo_clean_mvvm.presentation.screens.payouttype.PayoutTypeListScreen
+import com.creso.demo_clean_mvvm.presentation.screens.setting.SettingScreen
 
 @Composable
 fun MainNavHost(
@@ -54,7 +48,8 @@ fun MainNavHost(
         composable(Screen.PayoutForm.route) {
             PayoutFormScreen(navController)
         }
-        composable(Screen.CollectForm.route, arguments = listOf(
+        composable(
+            Screen.CollectForm.route, arguments = listOf(
             navArgument("id"){
                 type = NavType.StringType
                 nullable = true
@@ -63,7 +58,8 @@ fun MainNavHost(
         )) {
             CollectFormScreen(navController)
         }
-        composable(Screen.PayoutTypeForm.route, arguments = listOf(
+        composable(
+            Screen.PayoutTypeForm.route, arguments = listOf(
             navArgument("id"){
                 type = NavType.StringType
                 nullable = true

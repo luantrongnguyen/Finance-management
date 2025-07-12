@@ -1,4 +1,4 @@
-package com.creso.demo_clean_mvvm.presentation.collect
+package com.creso.demo_clean_mvvm.presentation.screens.collect
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
