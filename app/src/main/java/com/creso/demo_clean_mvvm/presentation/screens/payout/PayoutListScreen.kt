@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -48,9 +50,12 @@ import androidx.navigation.NavController
 import com.creso.demo_clean_mvvm.domain.model.Collect
 import com.creso.demo_clean_mvvm.domain.model.Payout
 import com.creso.demo_clean_mvvm.presentation.components.CustomSnackbar
+import com.creso.demo_clean_mvvm.presentation.components.TransactionCard
 import com.creso.demo_clean_mvvm.presentation.screens.payouttype.PayoutTypeViewModel
+import com.creso.demo_clean_mvvm.presentation.utils.CurrencyUtil
 import kotlinx.coroutines.launch
 import java.util.Date
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -60,7 +65,6 @@ fun PayoutListScreen(
   typeViewModel: PayoutTypeViewModel = hiltViewModel()
 ) {
   val payouts = viewModel.payouts
-  val types = typeViewModel.PayoutTypes
   var selectedPayout by remember { mutableStateOf<Payout?>(null) }
   var isDialogOpen by remember { mutableStateOf<Boolean>(false) }
   val snackbarHostState = remember { SnackbarHostState() }
@@ -92,27 +96,22 @@ fun PayoutListScreen(
     ) { padding ->
       LazyColumn(contentPadding = padding) {
         items(payouts.size) { i ->
-          Card(
-            modifier = Modifier
-              .fillMaxWidth()
-              .padding(8.dp)
-              .pointerInput(Unit) {
-                detectTapGestures(
-                  onLongPress = {
-                    selectedPayout = payouts[i]
-                    isDialogOpen = true
-                  }
-                )
-              },
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-          ) {
-            Column(Modifier.padding(16.dp)) {
-              Text("Số tiền chi: ${payouts[i].amount}")
-              Text("Ghi chú: ${payouts[i].name}")
-              Text("Ngày tạo: ${Date(payouts[i].date)}")
-              Text("Loại:${types.find { it.id == payouts[i].payoutType }?.name}")
-            }
-          }
+          TransactionCard(
+            modifier = Modifier.fillMaxWidth(),
+            logo = {
+              Icon(
+                imageVector = Icons.Default.AccountCircle,
+                contentDescription = "Transaction Logo",
+                modifier = Modifier.size(40.dp),
+              )
+            },
+            title = payouts[i].name ,
+            amount = payouts[i].amount,
+            date = payouts[i].date,
+            onLongPress = { selectedPayout = payouts[i]; isDialogOpen = true },
+            locale = Locale("vi", "VN"),
+            isIncome = false // Thu nếu amount > 0, chi nếu amount < 0
+          )
         }
       }
       if (isDialogOpen && selectedPayout != null) {

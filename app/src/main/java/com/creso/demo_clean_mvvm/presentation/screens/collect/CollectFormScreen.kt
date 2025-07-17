@@ -3,6 +3,7 @@ package com.creso.demo_clean_mvvm.presentation.screens.collect
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -36,7 +37,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.creso.demo_clean_mvvm.domain.model.Collect
+import com.creso.demo_clean_mvvm.presentation.components.CurrencyTextField
+import com.creso.demo_clean_mvvm.presentation.components.TransactionInputForm
 import com.creso.demo_clean_mvvm.presentation.screens.collecttype.CollectTypeViewModel
+import com.creso.demo_clean_mvvm.presentation.utils.CurrencyUtil
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,7 +53,6 @@ fun CollectFormScreen(
 
     // Load CollectTypes from DB
     val typeList = viewModelCollectType.collecTypes
-    var expanded by remember { mutableStateOf(false) }
 
     val collectId = navController.currentBackStackEntry
         ?.arguments?.getString("id")?.toIntOrNull()
@@ -84,25 +88,15 @@ fun CollectFormScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    if (isEditing) {
-                        val collect = Collect(
-                            id = collect.id,
-                            amount = amount.toDoubleOrNull() ?: 0.0,
-                            name = note,
-                            date = collect.date,
-                            collectType = selectedType ?: return@FloatingActionButton
-                        )
-                        viewModel.edit(collect)
-                    } else {
-                        val collect = Collect(
-                            id = 0,
-                            amount = amount.toDoubleOrNull() ?: 0.0,
-                            name = note,
-                            date = System.currentTimeMillis(),
-                            collectType = selectedType ?: return@FloatingActionButton
-                        )
-                        viewModel.create(collect)
-                    }
+                    val collect = Collect(
+                        id = if (isEditing) collect.id else 0,
+                        amount = CurrencyUtil.parseCurrency(amount) ,
+                        name = note,
+                        date = if(isEditing) collect.date else System.currentTimeMillis() ,
+                        collectType = selectedType ?: return@FloatingActionButton
+                    )
+                    if(isEditing) viewModel.edit(collect) else viewModel.create(collect)
+
                     navController.popBackStack()
                 },
                 shape = RoundedCornerShape(32.dp),
@@ -114,61 +108,19 @@ fun CollectFormScreen(
             }
         }
     ) { padding ->
-        Column(
-            modifier = Modifier
-                .padding(padding)
-                .padding(16.dp)
-        ) {
-            OutlinedTextField(
-                value = amount,
-                onValueChange = { amount = it },
-                label = { Text("Số tiền thu") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            OutlinedTextField(
-                value = note,
-                onValueChange = { note = it },
-                label = { Text("Ghi chú") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Text(text = "Loại", style = MaterialTheme.typography.bodyMedium)
-
-            Box {
-                OutlinedTextField(
-                    value = typeList.find { it.id == selectedType }?.name ?: "Chọn loại thu",
-                    onValueChange = {},
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { expanded = true; viewModelCollectType.loadList() },
-                    enabled = false,
-                    readOnly = true,
-                    trailingIcon = {
-                        Icon(Icons.Default.ArrowDropDown, contentDescription = "Dropdown")
-                    }
-                )
-
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    typeList.forEach { type ->
-                        DropdownMenuItem(
-                            text = { Text(type.name) },
-                            onClick = {
-                                selectedType = type.id
-                                expanded = false
-                            }
-                        )
-                    }
-                }
-            }
-        }
+        TransactionInputForm(
+            modifier = Modifier.padding(padding),
+            amount = amount,
+            onAmountChange = { amount = it },
+            note = note,
+            onNoteChange = { note = it },
+            selectedTypeId = selectedType,
+            onTypeSelected = { selectedType = it },
+            typeList = typeList,
+            viewModelType = viewModelCollectType, // Giả sử viewModel có loadList()
+            onExpandChange = { /* Xử lý khi mở dropdown */ },
+            isExpanded = false,
+            isIncome = true,
+        )
     }
 }
